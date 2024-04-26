@@ -1,0 +1,130 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background-color: #F5F5F5;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+input[type='text'] {
+    border: 1px solid #F5F5F5;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type='text']:focus {
+    outline: none;
+    border: 1px solid #8CA9FF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.app {
+    padding: 20px 8px;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #CDD9FE;
+}
+
+.app > header {
+    text-align: center;
+    font-size: 28px;
+}
+
+.book-form > label {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.book-form > label > span {
+    display: inline-block;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    padding-bottom: 8px;
+}
+
+.book-form > button[type='submit'] {
+    border: none;
+    appearance: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.book-form > button[type='submit']:hover {
+    background-color: #695eff;
+    color: #F5F5F5;
+}
+
+.book-list {
+
+}
+
+.book-list .book-list-header {
+    display: flex;
+    border-bottom: 1px solid #695eff;
+    padding: 10px;
+    align-items: center;
+}
+
+.book-list .book-list-header > p {
+    flex-grow: 1;
+    letter-spacing: -0.5px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 10px;
+}
+
+.item > p {
+    flex-grow: 1;
+}
+
+.delete-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.notify {
+    position: fixed;
+    top: 12%;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background-color: cornflowerblue;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.25s;
+    z-index: -1;
+}
+
+.notify.active {
+    opacity: 1;
+    z-index: auto;
+}
