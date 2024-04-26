@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./index.css"/>
+</head>
+<body>
+<header class="food-menu-header">
+    <h2>
+        Food Menu
+        <span class="underline"></span>
+    </h2>
+    <nav class="header-nav">
+        <ul class="nav-list">
+            <li>
+                <a data-flag="all">All</a>
+            </li>
+            <li>
+                <a data-flag="breakfast">Breakfast</a>
+            </li>
+            <li>
+                <a data-flag="lunch">Lunch</a>
+            </li>
+            <li>
+                <a data-flag="shakes">Shakes</a>
+            </li>
+            <li>
+                <a data-flag="dinner">Dinner</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <article class="card-wrap">
+<!--        <section class="food-card">-->
+<!--            <img src="./assets/img.png" alt="food-img" class="food-img">-->
+<!--            <div class="card-body">-->
+<!--                <div class="header">-->
+<!--                    <b class="title">foodName</b>-->
+<!--                    <b class="price">3000원</b>-->
+<!--                </div>-->
+<!--                <div class="contents">-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        <section class="food-card">-->
+<!--            <img src="./assets/img.png" alt="food-img" class="food-img">-->
+<!--            <div class="card-body">-->
+<!--                <div class="header">-->
+<!--                    <b class="title">foodName</b>-->
+<!--                    <b class="price">3000원</b>-->
+<!--                </div>-->
+<!--                <div class="contents">-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        <section class="food-card">-->
+<!--            <img src="./assets/img.png" alt="food-img" class="food-img">-->
+<!--            <div class="card-body">-->
+<!--                <div class="header">-->
+<!--                    <b class="title">foodName</b>-->
+<!--                    <b class="price">3000원</b>-->
+<!--                </div>-->
+<!--                <div class="contents">-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+    </article>
+</main>
+</body>
+</html>
+<template id="food-card">
+    <section class="food-card">
+        <img src="" alt="food-img" class="food-img">
+        <div class="card-body">
+            <div class="header">
+                <b class="title"></b>
+                <b class="price"></b>
+            </div>
+            <div class="contents">
+            </div>
+        </div>
+    </section>
+</template>
+<script src="./index.js"></script>
