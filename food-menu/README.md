@@ -2,8 +2,9 @@
 
 ---
 
-- 음식 메뉴 앱   
-[음식 메뉴 앱.mp4](%C0%BD%BD%C4%20%B8%DE%B4%BA%20%BE%DB.mp4)
+- 음식 메뉴 앱
+스택: HTML, CSS, JS
+
 
 ![img.png](img.png)
 ![img_1.png](img_1.png)
