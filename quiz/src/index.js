@@ -97,6 +97,8 @@ const checkQuizAnswers = (selectedAnswer) => {
 
 const nextBtn = document.querySelector('.next-btn');
 nextBtn.addEventListener('click', () => {
+    const nextBtnEl = document.querySelector('.next-btn');
+    nextBtnEl.classList.add('hidden');
     document.querySelector('.answer-wrap').innerHTML = '';
     document.body.style.backgroundColor = '#6363ff';
     initQuiz();
