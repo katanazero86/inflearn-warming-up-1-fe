@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub Finder</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div class="app">
+    <header class="app-header">
+        <h2>
+            GitHub Finder
+        </h2>
+    </header>
+    <section class="app-input">
+        <h3>
+            Search GitHub Users
+        </h3>
+        <p>
+            Enter a username to fetch a user profile and repos
+        </p>
+        <form>
+            <input id="userName" name="userName" type="text"/>
+        </form>
+    </section>
+    <section class="user">
+        <!--            <div class="user-left">-->
+        <!--                <img src="https://avatars.githubusercontent.com/u/38754963?v=4" class="user-img" loading="lazy" alt="user-img"/>-->
+        <!--                <button class="user-view-profile">-->
+        <!--                    View Profile-->
+        <!--                </button>-->
+        <!--            </div>-->
+        <!--            <div class="user-right">-->
+        <!--                <div class="badges">-->
+        <!--                    <span class="badge repos">Public Repos: 54</span>-->
+        <!--                    <span class="badge gists">Public Gists: 0</span>-->
+        <!--                    <span class="badge followers">Followers: 1202</span>-->
+        <!--                    <span class="badge following">Following: 0</span>-->
+        <!--                </div>-->
+        <!--                <div class="user-info">-->
+        <!--                    <p>-->
+        <!--                        Company: null-->
+        <!--                    </p>-->
+        <!--                    <p>-->
+        <!--                        Website/Blog: null-->
+        <!--                    </p>-->
+        <!--                    <p>-->
+        <!--                        Location: null-->
+        <!--                    </p>-->
+        <!--                    <p>-->
+        <!--                        Member Since: null-->
+        <!--                    </p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+    </section>
+    <section class="repos">
+        <h2 class="repos-header" style="display: none">
+            Latest Repos(5)
+        </h2>
+        <div class="repos-body">
+        </div>
+        <!--            <h2>-->
+        <!--                Latest Repos(5)-->
+        <!--            </h2>-->
+        <!--            <div class="user-repos">-->
+        <!--                <div class="repo">-->
+        <!--                    <p class="repo-name">-->
+        <!--                        react-->
+        <!--                    </p>-->
+        <!--                    <div class="badges">-->
+        <!--                        <span class="badge stars">-->
+        <!--                            Stars: 1-->
+        <!--                        </span>-->
+        <!--                        <span class="badge watchers">-->
+        <!--                            Watchers: 1-->
+        <!--                        </span>-->
+        <!--                        <span class="badge forks">-->
+        <!--                            Forks: 1-->
+        <!--                        </span>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+    </section>
+    <footer class="app-footer">
+        GitHub Finder ⓒ
+    </footer>
+</div>
+</body>
+</html>
+<script src="./index.js"></script>
+<template id="userContents">
+    <div class="user-top">
+        <img src="" class="user-img" loading="lazy" alt="user-img"/>
+        <button class="user-view-profile">
+            View Profile
+        </button>
+    </div>
+    <div class="user-bottom">
+        <div class="badges">
+            <span class="badge repos">Public Repos: 54</span>
+            <span class="badge gists">Public Gists: 0</span>
+            <span class="badge followers">Followers: 1202</span>
+            <span class="badge following">Following: 0</span>
+        </div>
+        <div class="user-info">
+            <p class="company">
+                Company: null
+            </p>
+            <p class="web">
+                Website/Blog: null
+            </p>
+            <p class="location">
+                Location: null
+            </p>
+            <p class="since">
+                Member Since: null
+            </p>
+        </div>
+    </div>
+</template>
+<template id="userRepos">
+    <div class="user-repos">
+        <div class="repo">
+            <p class="repo-name">
+                react
+            </p>
+            <div class="badges">
+                <span class="badge stars">
+                           Stars: 1
+                </span>
+                <span class="badge watchers">
+                            Watchers: 1
+                </span>
+                <span class="badge forks">
+                            Forks: 1
+                </span>
+            </div>
+        </div>
+    </div>
+</template>

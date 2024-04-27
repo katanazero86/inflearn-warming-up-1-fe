@@ -1,0 +1,180 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.app {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    min-width: 375px;
+}
+
+.app-header {
+    background-color: #3458eb;
+    color: white;
+    padding: 20px 8px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.app-input {
+    padding: 8px;
+    border: 1px solid #695eff;
+    margin-bottom: 10px;
+}
+
+.app-input > h3 {
+    letter-spacing: -0.5px;
+}
+
+.app-input > p {
+    color: #525252;
+    padding: 10px 0;
+}
+
+.app-input > form input[type='text'] {
+    width: 100%;
+    padding: 10px;
+    appearance: none;
+    border: 1px solid #3458eb;
+    outline: none;
+    border-radius: 8px;
+}
+
+.app-input > form input[type='text']:focus {
+    border-color: #de6dc9;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+}
+
+.user-top {
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.user-img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.user-view-profile {
+    appearance: none;
+    border: 1px solid #695eff;
+    background-color: #695eff;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: -0.5px;
+}
+
+.user-bottom {
+    padding: 0 10px;
+    flex-grow: 1;
+}
+
+.badge.following {
+    background-color: #4cbdd9;
+}
+
+.user-info {
+    margin-top: 16px;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.user-info > p {
+    letter-spacing: -0.5px;
+    font-size: 12px;
+    padding: 8px;
+    border-top: 1px solid #bfbfbf;
+    border-left: 1px solid #bfbfbf;
+    border-right: 1px solid #bfbfbf;
+}
+
+.repo {
+    display: flex;
+    align-items: center;
+    border: 1px solid #bfbfbf;
+    padding: 8px;
+    margin-top: 8px;
+}
+
+.repo .repo-name {
+    flex-basis: 50%;
+    color: #454545;
+    font-weight: 600;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.repo .badges > .badge:not(:last-child){
+    margin-right: 8px;
+}
+
+.badges {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.badge {
+    font-size: 12px;
+    letter-spacing: -0.5px;
+    color: white;
+    display: inline-block;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.badge.repos {
+    background-color: #5967ff;
+}
+
+.badge.gists {
+    background-color: #b5b5b5;
+}
+
+.badge.followers {
+    background-color: #59e3a7;
+}
+
+.badge.stars {
+    background-color: #5967ff;
+}
+
+.badge.watchers {
+    background-color: #b5b5b5;
+}
+
+.badge.forks {
+    background-color: #59e3a7;
+}
+
+.app-footer {
+    margin-top: 10px;
+    background-color: #3458eb;
+    color: white;
+    padding: 20px 8px;
+    text-align: center;
+    font-weight: 600;
+}
