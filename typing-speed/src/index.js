@@ -6,13 +6,25 @@ const typingGameTexts = [
         `That is what I'm saying.`,
         `Is there a hotel in this area?`,
         `I don't know what to say.`,
-        `I'm about to leave.`
+        `I'm about to leave.`,
+        `He's really good at negotiating.`
+    ],
+    [
+        `I feel a little under the weather today.`,
+        `I need to stay at home. I feel under the weather.`,
+        `I just joined the marketing team last month.`,
+        `I left the company.`,
+        `I've got plans tonight, so can I have a rain check?`,
+        `I have to go to work by 9.`,
+        `I have to pay the water bill by next Monday.`,
+        `I passed the exam.`,
     ]
 ];
 
 const sec = 20;
 let gameTimer = sec; // 20 sec
-let gameTextsIndex = 0;
+let gameIndex = 0;
+let currentTextIndex = 0;
 let currentText = '';
 let beforeErrorCount = 0;
 let errorCount = 0;
@@ -42,10 +54,8 @@ const updateWPM = () => {
     let finalWPM;
     if (gameTimer === 0) {
         finalWPM = (totalCharactersEntered / 5) * (60 / sec)
-        console.log(finalWPM);
     } else {
         finalWPM = (totalCharactersEntered / 5) * (60 / (sec - gameTimer))
-        console.log(finalWPM);
     }
     const wpmCountEl = document.querySelector('.wpm .count');
     wpmCountEl.textContent = finalWPM.toFixed(0);
@@ -57,10 +67,8 @@ const updateCPM = () => {
     let finalCPM;
     if (gameTimer === 0) {
         finalCPM = (totalCharactersEntered / (20 / 60));
-        console.log(finalCPM)
     } else {
         finalCPM = (totalCharactersEntered / ((sec - gameTimer) / 60));
-        console.log(finalCPM)
     }
     const cpmCountEl = document.querySelector('.cpm .count');
     cpmCountEl.textContent = finalCPM.toFixed(0);
@@ -76,8 +84,8 @@ const startTypingGame = () => {
         timeCountEl.textContent = gameTimer--;
     }, 1000);
 
-    currentText = typingGameTexts[0][gameTextsIndex];
-    totalTexts = typingGameTexts[0].reduce((acc, val) => {
+    currentText = typingGameTexts[gameIndex][currentTextIndex];
+    totalTexts = typingGameTexts[gameIndex].reduce((acc, val) => {
         return acc + val.length;
     }, totalTexts);
 
@@ -111,7 +119,8 @@ const stopTypingGame = () => {
 
 const initTypingGame = () => {
     gameTimer = 20;
-    gameTextsIndex = 0;
+    gameIndex = Math.floor(Math.random() * typingGameTexts.length);
+    currentTextIndex = 0;
     currentText = '';
     beforeErrorCount = 0;
     errorCount = 0;
@@ -125,12 +134,18 @@ const initTypingGame = () => {
     errorsCountEl.textContent = 0;
     const accuracyCountEl = document.querySelector('.accuracy .count');
     accuracyCountEl.textContent = 100;
+    const wpmCountEl = document.querySelector('.wpm .count');
+    wpmCountEl.textContent = 0;
+    wpmCountEl.parentElement.classList.add('hidden');
+    const cpmCountEl = document.querySelector('.cpm .count');
+    cpmCountEl.textContent = 0;
+    cpmCountEl.parentElement.classList.add('hidden');
 
 };
 
 const loadNextText = () => {
-    gameTextsIndex += 1;
-    currentText = typingGameTexts[0][gameTextsIndex];
+    currentTextIndex += 1;
+    currentText = typingGameTexts[gameIndex][currentTextIndex];
     if (currentText === undefined) stopTypingGame(); // 게임 종료
 
     const currentTextEl = document.querySelector('.current-text');
