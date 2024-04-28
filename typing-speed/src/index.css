@@ -1,0 +1,100 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.app {
+    height: 100%;
+    background-color: #e6efff;
+    padding: 12px;
+}
+
+.app-header {
+    text-align: center;
+}
+
+.app-indicators {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.errors, .time, .accuracy, .wpm, .cpm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.wpm, .cpm {
+    background-color: #592cde !important;
+}
+
+.count {
+    font-size: 20px;
+}
+
+.app-typing-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.app-typing-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-typing-input > textarea {
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #59e3a7;
+    appearance: none;
+    outline: none;
+    width: 100%;
+    resize: none;
+    font-size: 18px;
+    text-align: center;
+}
+
+.game-start {
+    cursor: pointer;
+    border: 1px solid #cccdff;
+    padding: 10px;
+}
+
+.box {
+    padding: 8px;
+    margin: 8px;
+    background-color: #6164ff;
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 1px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+}
+
+.box-text {
+    width: 550px;
+    max-width: 550px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}

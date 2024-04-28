@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타이핑 스피드 측정</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <main class="app">
+        <header class="app-header">
+            <h2>
+                타이핑 스피드 측정
+            </h2>
+        </header>
+        <div class="app-indicators">
+            <div class="wpm box hidden">
+                <p>WPM</p>
+                <p class="count">0</p>
+            </div>
+            <div class="cpm box hidden">
+                <p>CPM</p>
+                <p class="count">0</p>
+            </div>
+            <div class="errors box">
+                <p>ERRORS</p>
+                <p class="count">0</p>
+            </div>
+            <div class="time box">
+                <p>TIME</p>
+                <p class="count">20</p>
+            </div>
+            <div class="accuracy box">
+                <p>ACCURACY(%)</p>
+                <p class="count">
+                    100
+                </p>
+            </div>
+        </div>
+        <div class="app-typing-text box box-text">
+            <p class="current-text hidden"></p>
+            <p class="game-start">
+                클릭하여, 게임 시작하기 :)
+            </p>
+        </div>
+        <div class="app-typing-input box-text">
+            <textarea rows="3" class="text-input" disabled></textarea>
+        </div>
+    </main>
+</body>
+</html>
+<script src="./index.js"></script>
