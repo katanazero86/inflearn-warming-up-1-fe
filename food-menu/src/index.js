@@ -9,7 +9,7 @@ const dummy = [
     {
         name: '크렌베리 샐러드',
         price: 2000,
-        imgUrl: './assets/img_1.png',
+        imgUrl: './assets/img.png',
         contents: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
         type: 'breakfast',
     },
