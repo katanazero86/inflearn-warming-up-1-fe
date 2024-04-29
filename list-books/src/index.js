@@ -16,9 +16,40 @@ bookFormEl.addEventListener('submit', (e) => {
     setBook(bookName, author);
     e.target['bookName'].value = '';
     e.target['author'].value = '';
-    const currentIndex = renderBookList();
-    initDeleteIconBtnEvent(currentIndex);
+
+    renderBookList();
     showAddNotify();
+});
+
+const bookListBodyEl = document.querySelector('.book-list-body');
+bookListBodyEl.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-delete-left') && e.target.tagName.toLowerCase() === 'i') {
+        const {index: targetIndex} = e.target.dataset;
+        const deleteIconBtnEl = document.querySelector(`.delete-icon-${targetIndex}`);
+
+        const bookList = JSON.parse(localStorage.getItem('bookList'));
+        const newBookList = bookList.filter((book, index) => {
+            if (index !== Number(targetIndex)) return book;
+        });
+        if (newBookList.length === 0) {
+            localStorage.removeItem('bookList');
+        } else {
+            localStorage.setItem('bookList', JSON.stringify(newBookList));
+        }
+
+        const itemEl = deleteIconBtnEl.parentNode;
+        let nextItemEl = itemEl.nextElementSibling;
+        while (nextItemEl !== null) {
+            const {index} = nextItemEl.querySelector('.delete-icon > i').dataset;
+            nextItemEl.querySelector('.delete-icon').classList.remove(`delete-icon-${index}`);
+            nextItemEl.querySelector('.delete-icon').classList.add(`delete-icon-${index - 1}`);
+            nextItemEl.querySelector('.delete-icon > i').dataset.index = index - 1;
+            nextItemEl = nextItemEl.nextElementSibling;
+        }
+
+        itemEl.parentNode.removeChild(itemEl);
+        showAddNotify('remove');
+    }
 });
 
 const setBook = (bookName, author) => {
@@ -42,36 +73,15 @@ const renderBookList = () => {
         const booListArr = JSON.parse(bookList);
         const currentIndex = booListArr.length - 1;
         const bookListBody = document.querySelector('.book-list-body');
-        bookListBody.innerHTML += `
-        <div class="item">
-            <p>${booListArr[currentIndex].bookName}</p>
-            <p>${booListArr[currentIndex].author}</p>
-            <div class="delete-icon delete-icon-${currentIndex}">
-                <i class="fa-solid fa-delete-left" data-index="${currentIndex}"></i>
-            </div>
-        </div>`;
-        return currentIndex;
+        const itemTemplate = document.querySelector('#item');
+        const clone = document.importNode(itemTemplate.content, true);
+        clone.querySelector('.book-name').textContent = booListArr[currentIndex].bookName;
+        clone.querySelector('.book-author').textContent = booListArr[currentIndex].author;
+        clone.querySelector('.delete-icon').classList.add(`delete-icon-${currentIndex}`);
+        clone.querySelector('.delete-icon > i').dataset.index = currentIndex;
+        bookListBody.appendChild(clone);
     }
 };
-
-const initDeleteIconBtnEvent = (currentIndex) => {
-    const deleteIconBtnEl = document.querySelector(`.delete-icon-${currentIndex}`);
-    deleteIconBtnEl.addEventListener('click', (e) => {
-        const {index: targetIndex} = e.target.dataset;
-        const bookList = JSON.parse(localStorage.getItem('bookList'));
-        const newBookList = bookList.filter((book, index) => {
-            if (index !== Number(targetIndex)) return book;
-        });
-        if (newBookList.length === 0) {
-            localStorage.removeItem('bookList');
-        } else {
-            localStorage.setItem('bookList', JSON.stringify(newBookList));
-        }
-        const parent = deleteIconBtnEl.parentNode;
-        deleteIconBtnEl.parentNode.parentNode.removeChild(parent);
-        showAddNotify('remove');
-    });
-}
 
 const showAddNotify = (flag = 'add') => {
     const notifyEl = document.querySelector('.notify');
