@@ -6,3 +6,4 @@
 스택: HTML, CSS, JS
 
 ![img.png](img.png)
+![img1.gif](img_1.gif)
