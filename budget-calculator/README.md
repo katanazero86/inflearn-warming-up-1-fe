@@ -1,3 +1,15 @@
+### 인프런 워밍업 클럽 스터디 1기 - FE
+
+---
+
+- 예산 계산기 앱
+  스택: Vite, Typescript, React
+
+
+![img.gif](img.gif)
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
