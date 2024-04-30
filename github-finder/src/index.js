@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const userName = e.target.value;
 
-        // 쓰로틀링
+        // 디바운싱
         if (timer) clearTimeout(timer);
         timer = setTimeout(async () => {
             const userEl = document.querySelector('.user');
