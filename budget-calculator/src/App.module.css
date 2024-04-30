@@ -1,0 +1,108 @@
+
+button {
+    border: none;
+    background-color: #3458eb;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2844b5;
+}
+
+input[type='text'], input[type='number'] {
+    border: none;
+    border-bottom: 2px solid #695eff;
+    padding: 10px;
+    letter-spacing: -0.5px;
+    appearance: none;
+    outline: none;
+}
+
+input[type='text']:focus {
+    border-bottom-color: #ff6ec2;
+}
+
+.header {
+    text-align: center;
+    font-size: 32px;
+}
+
+.budgetForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.budgetFormInputs {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+}
+
+.budgetFormInputs .budgetInput {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.budgetInput > span {
+    display: inline-block;
+    padding: 8px 0;
+    color: #303030;
+    font-weight: 600;
+}
+
+.budgetFormBtn {
+    margin-top: 8px;
+}
+
+.budgetUpdate {
+    background-color: #59ba92;
+}
+
+.budgetUpdate:hover {
+    background-color: #388062;
+}
+
+.budgetList {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.budgetItem {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    justify-content: space-between;
+    border: 1px solid #c7c7c7;
+}
+
+.budgetItem:not(:last-child) {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    justify-content: space-between;
+    border: 1px solid #c7c7c7;
+    margin-bottom: 8px;
+}
+
+.budgetItem .budgetTitle, .amount {
+    color: #303030;
+    letter-spacing: -0.5px;
+}
+
+.budgetItem .itemButtons > button:last-child {
+    margin-left: 4px;
+}
+
+.removeBudgetList {
+    margin-top: 8px;
+    background-color: #ff8a8a;
+}
+
+.removeBudgetList:hover {
+    background-color: #ff5959;
+}

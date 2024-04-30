@@ -47,7 +47,6 @@ let timer;
 document.addEventListener('DOMContentLoaded', () => {
     const inputUserNameEl = document.querySelector('#userName');
 
-
     inputUserNameEl.addEventListener('keyup', (e) => {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'ArrowDown') return false;
         if (e.keyCode === 37 || e.keyCode === 39 || e.keyCode === 38 || e.keyCode === 40) return false;
