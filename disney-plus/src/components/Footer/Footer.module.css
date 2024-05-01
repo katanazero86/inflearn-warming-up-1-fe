@@ -1,0 +1,31 @@
+.footer {
+    text-align: center;
+    padding: 26px;
+}
+
+.footer > img {
+    max-width: 80px;
+    object-fit: cover;
+}
+
+.footer > ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+.footer > ul > li > a {
+    padding: 8px 12px;
+    font-size: 12px;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: #f9f9f9;
+}
+
+.footerInfo {
+    margin-top: 20px;
+    font-size: 12px;
+    letter-spacing: -0.5px;
+}
