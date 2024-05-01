@@ -1,0 +1,238 @@
+/*header*/
+.header {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+.nav {
+    padding: 0 36px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.navList {
+    margin-left: 0;
+    padding-left: 0;
+    text-indent: 0;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navListItem {
+    display: inline-block;
+}
+
+.navListItem > a {
+    padding: 0 16px;
+    height: 50px;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, .8);
+    margin: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all .2s ease 0s;
+    text-decoration: none;
+    font-weight: 400;
+    color: #f9f9f9;
+    border: 1px solid silver;
+    font-size: 18px;
+}
+
+.navListItem > a:hover {
+    background-color: #f9f9f9;
+    border-color: transparent;
+    color: #040714;
+}
+
+/*hero*/
+.hero {
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    min-height: 75vh;
+    position: relative;
+}
+
+/*imageGallery*/
+.imageGallery {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.controlContainer {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    right: 10px;
+    width: 60vw;
+    transform: translateX(-50%);
+}
+
+.controlContainer .pagination{
+    height: 2px;
+    background-color: silver;
+    border: none;
+    margin: 1px;
+    position: relative;
+    padding: 0;
+    flex-grow: 1;
+    opacity: .2;
+}
+
+.controlContainer .pagination:after {
+    background: 0 0;
+    content: "";
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    position: absolute;
+    height: 20px;
+    bottom: -9px;
+}
+
+.galleryImagesContainer {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.galleryImageContainer {
+    height: 100%;
+}
+
+.galleryImageContainer > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/*contentContainer*/
+.contentContainer {
+    width: 100%;
+    max-width: 640px;
+    text-align: left;
+    z-index: 1;
+}
+
+.contentContainer > img {
+    object-fit: cover;
+    max-width: 180px;
+}
+
+.contentContainer > h1 {
+    font-weight: 700;
+    font-size: 40px;
+    margin-top: 24px;
+    margin-bottom: 0;
+    color: #f9f9f9;
+    letter-spacing: -.16px;
+    line-height: 1.1;
+}
+
+.contentTwoColumns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.contentTwoColumns .flexItem {
+    flex: 0 0 calc(50% - 12px);
+}
+
+.flexItem .h3 {
+    font-size: 28px;
+    margin-top: 24px;
+    display: inline-block;
+    color: #f9f9f9;
+}
+
+.flexItem .fine {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -.3px;
+}
+
+.flexItemFooter > a {
+    height: 60px;
+    max-width: 360px;
+    padding: 16px 24px;
+    width: 100%;
+    color: #f9f9f9;
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid silver;
+    text-align: center;
+    transition: all .2s ease 0s;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flexItemFooter > .linkStandard:hover {
+    background-color: #f9f9f9;
+    border: 1px solid #f9f9f9;
+    color: #040714;
+    text-decoration: none;
+}
+
+.flexItemFooter > .linkPremium {
+    background-color: #02d6e8;
+    color: #02172a;
+    border: none;
+}
+
+.flexItemFooter > .linkPremium:hover {
+    border: none !important;
+    filter: brightness(.85) !important;
+    text-decoration: none !important;
+}
+
+.flexItemFooter > p {
+    font-size: 12px;
+    letter-spacing: -.2px;
+}
+
+.info1 {
+    margin: 20px 0 0 0;
+    line-height: 1.5;
+}
+
+.info1 .link {
+    color: #f9f9f9;
+    cursor: pointer;
+    text-underline-position: under;
+}
+
+.info2 {
+    margin: 20px 0 0 0;
+    font-size: 12px;
+    font-weight: 400;
+}
