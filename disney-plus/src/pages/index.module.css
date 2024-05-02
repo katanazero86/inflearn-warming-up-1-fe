@@ -30,7 +30,7 @@
     left: 50%;
     bottom: 60px;
     right: 10px;
-    width: 60vw;
+    width: 45vw;
     transform: translateX(-50%);
 }
 
@@ -464,7 +464,6 @@
 .memberShipDescription {
     text-align: left;
     font-size: 12px;
-    padding: 0 24px;
     line-height: 1.6;
     letter-spacing: -.5px;
 }

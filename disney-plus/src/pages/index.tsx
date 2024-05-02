@@ -324,7 +324,7 @@ export default function Index() {
                             </div>
                         </div>
                         <div className={styles.tableRow}>
-                        <div>
+                            <div>
                                 연간 멤버십 구독료(부가세 포함)
                             </div>
                             <div>
@@ -395,27 +395,27 @@ export default function Index() {
                                 <Check/>
                             </div>
                         </div>
-                    </div>
-                    <p className={styles.memberShipDescription}>
+                        <p className={styles.memberShipDescription}>
                         <span>
                             맴버십 구독이 필요합니다.
                         </span>
-                        <br/>
-                        <span>
+                            <br/>
+                            <span>
                             *결제 주기 종료 시 취소 처리됩니다.
                         </span>
-                        <br/>
-                        <span>
+                            <br/>
+                            <span>
                             **월간 멤버십 12개월 구독료 대비 할인된 가격입니다. 추가 약관 적용.
                         </span>
-                        <br/>
-                        <span>
+                            <br/>
+                            <span>
                             ***영상 화질/오디오 및 저장 기능은 인터넷 서비스, 기기 성능, 멤버십 유형 및 각 콘텐츠에 따라 달라질 수 있습니다. 각 콘텐츠별 다양한 기능 표시가 있을 수 있으나, 해당 멤버십 유형에서 사용 가능한 최대 사양까지만 이용할 수 있습니다. 더 알아보기.
                         </span>
-                    </p>
+                        </p>
+                    </div>
                 </section>
                 <section className={styles.taste}>
-                <div className={styles.tasteItem}>
+                    <div className={styles.tasteItem}>
                         <h2>취향에 따라 골라보는 다양한 콘텐츠가 모두 한자리에</h2>
                         <p>디즈니+는 디즈니, 픽사, 마블, 스타워즈, 내셔널지오그래픽, Star의 최고 콘텐츠들을 모두 한곳에 모아 제공합니다.</p>
                     </div>
@@ -454,7 +454,7 @@ export default function Index() {
                         </li>
                     </ul>
                 </section>
-                <FaQ />
+                <FaQ/>
             </main>
             <Footer/>
         </>
