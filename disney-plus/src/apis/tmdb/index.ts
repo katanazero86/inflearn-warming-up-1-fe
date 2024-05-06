@@ -1,12 +1,12 @@
 import {Axios, AxiosInstance} from "axios";
 import {MovieDetail, MovieList, MovieMultiList, TvDetail} from "../../@types/tmdb.types.ts";
-import {TMDB_API_KRY} from "../../constants/config.ts";
+import {TMDB_API_KEY} from "../../constants/config.ts";
 
 export const tmdbApi = (axiosInstance: AxiosInstance, _: Axios) => ({
     async findNowPlaying() {
         try {
             const queryParams = new URLSearchParams({
-                api_key: TMDB_API_KRY
+                api_key: TMDB_API_KEY
             });
             const res = await axiosInstance.get<MovieList>(`/movie/now_playing?language=ko-KR&${queryParams.toString()}`);
             return res.data;
@@ -18,7 +18,7 @@ export const tmdbApi = (axiosInstance: AxiosInstance, _: Axios) => ({
     async findMovieDetailById(targetId: number) {
         try {
             const queryParams = new URLSearchParams({
-                api_key: TMDB_API_KRY,
+                api_key: TMDB_API_KEY,
                 language: 'ko-KR',
                 append_to_response: 'videos,images'
             });
@@ -32,7 +32,7 @@ export const tmdbApi = (axiosInstance: AxiosInstance, _: Axios) => ({
     async findTvDetailById(targetId: number) {
         try {
             const queryParams = new URLSearchParams({
-                api_key: TMDB_API_KRY,
+                api_key: TMDB_API_KEY,
                 language: 'ko-KR',
                 append_to_response: 'videos,images'
             });
@@ -46,7 +46,7 @@ export const tmdbApi = (axiosInstance: AxiosInstance, _: Axios) => ({
     async findMoviesPopular() {
         try {
             const queryParams = new URLSearchParams({
-                api_key: TMDB_API_KRY,
+                api_key: TMDB_API_KEY,
                 language: 'ko-KR',
                 page: '1'
             });
@@ -60,7 +60,7 @@ export const tmdbApi = (axiosInstance: AxiosInstance, _: Axios) => ({
     async findMoviesTopRated() {
         try {
             const queryParams = new URLSearchParams({
-                api_key: TMDB_API_KRY,
+                api_key: TMDB_API_KEY,
                 language: 'ko-KR',
                 page: '1'
             });
@@ -74,7 +74,7 @@ export const tmdbApi = (axiosInstance: AxiosInstance, _: Axios) => ({
     async findMoviesByDiscoverGenre(targetGenreId: number) {
         try {
             const queryParams = new URLSearchParams({
-                api_key: TMDB_API_KRY,
+                api_key: TMDB_API_KEY,
                 language: 'ko-KR',
                 page: '1',
                 with_genres: `${targetGenreId}`,
@@ -89,7 +89,7 @@ export const tmdbApi = (axiosInstance: AxiosInstance, _: Axios) => ({
     async findMoviesMulti(targetQuery: string) {
         try {
             const queryParams = new URLSearchParams({
-                api_key: TMDB_API_KRY,
+                api_key: TMDB_API_KEY,
                 language: 'ko-KR',
                 include_adult: 'true',
                 page: '1',
