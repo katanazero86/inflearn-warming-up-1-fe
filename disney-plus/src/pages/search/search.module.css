@@ -1,0 +1,24 @@
+.searchContainer {
+    padding: 8px;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.searchItem {
+    flex: 0 0 calc(33% - 8px);
+    width: calc(33% - 8px);
+}
+
+.searchItem > img {
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.searchItem > img:hover {
+    transform: scale(1.05);
+}

@@ -1,10 +1,10 @@
-import Index from "./pages";
+import {Router} from "./router";
 
 export default function App() {
 
     return (
         <>
-            <Index/>
+            <Router />
         </>
     )
 }

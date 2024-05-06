@@ -1,0 +1,9 @@
+.searchMovieContainer {
+    height: 100vh;
+}
+
+.searchMovieContainer > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

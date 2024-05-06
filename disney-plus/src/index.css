@@ -27,3 +27,32 @@ ul, li {
     margin: 0;
     padding: 0;
 }
+
+.slick-dots li.slick-active button:before {
+    color: #dedede !important;
+}
+
+.slick-dots li button:before {
+    color: white !important;
+}
+
+.slick-prev {
+    left: 12px !important;
+    z-index: 1 !important;
+    width: 26px !important;
+    height: 26px !important;
+}
+
+.slick-next {
+    right: 12px !important;
+    width: 26px !important;
+    height: 26px !important;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 26px !important;
+}
+
+.slick-slide {
+    padding: 0 4px !important;
+}
