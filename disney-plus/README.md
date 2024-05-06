@@ -2,8 +2,8 @@
 
 ---
 
-- 디지니 플러스 앱
-  스택: Vite, Typescript, React
+- 디지니 플러스 앱   
+  스택: Vite, Typescript, React   
 
 - css module 방식 사용
 - 영화 정보는 TMDB API 활용
