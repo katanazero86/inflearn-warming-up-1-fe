@@ -1,3 +1,18 @@
+### 인프런 워밍업 클럽 스터디 1기 - FE
+
+---
+
+- 디지니 플러스 앱
+  스택: Vite, Typescript, React
+
+- css module 방식 사용
+- 영화 정보는 TMDB API 활용
+- 로그인은 @react-oauth/google 모듈을 활용(Implicit Grant: 암묵적 승인)
+
+![img.png](img.png)
+![img_1.png](img_1.png)
+
+---
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

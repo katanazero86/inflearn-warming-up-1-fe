@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig(({mode}) => {
   console.log(mode);
   const env = loadEnv(mode, process.cwd(), 'VITE_');
-  if(!env.hasOwnProperty('TMDB_API_KEY') || env.hasOwnProperty('VITE_GOOGLE_OAUTH_CLIENT_ID')) {
+  if(!env.hasOwnProperty('VITE_TMDB_API_KEY') || !env.hasOwnProperty('VITE_GOOGLE_OAUTH_CLIENT_ID')) {
       console.error(`env variable is missing in ${mode} mode`);
       process.exit(1);
   }
