@@ -28,9 +28,17 @@ export const pokemonApis = (axiosInstance: AxiosInstance, _: AxiosStatic) => {
           }),
         );
 
+        // type
+        const typeRes = await Promise.all(
+          detailRes.map((detail) => {
+            return axiosInstance.get(detail.data.types[0].type.url);
+          }),
+        );
+
         res.data.results = res.data.results.map((data, i) => {
           data.detail = detailRes[i].data;
           data.species = speciesRes[i].data;
+          data.type = typeRes[i].data;
           return data;
         });
 

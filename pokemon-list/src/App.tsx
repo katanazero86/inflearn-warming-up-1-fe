@@ -1,5 +1,4 @@
-import { Fragment } from 'react';
-import { themeClass } from './theme.css.ts';
+import { Fragment, useState } from 'react';
 import {
   container,
   header,
@@ -12,8 +11,12 @@ import {
   moreBtn,
 } from './App.styles.css.ts';
 import { usePokemonApi } from './hooks/usePokemonApi.ts';
-import { PokemonList } from './@types/pokemon/pokemon.types.ts';
+import {
+  PokemonList,
+  PokemonListResult,
+} from './@types/pokemon/pokemon.types.ts';
 import LoadingSpinner from './components/LoadingSpiner/LoadingSpinner.tsx';
+import PokemonDetailModal from './components/Modal/PokemonDetailModal/PokemonDetailModal.tsx';
 
 export default function App() {
   const {
@@ -26,22 +29,28 @@ export default function App() {
     isLoading,
   } = usePokemonApi();
 
-  if (isLoading && !data) return <p>Loading...</p>;
-  if (status === 'error') return <p>Error: {error.message}</p>;
+  const [isOpen, setIsOpen] = useState(false);
+  const [pokemon, setPokemon] = useState<PokemonListResult | null>(null);
+
+  const handlePokemonClick = (targetItem: PokemonListResult) => () => {
+    setPokemon(targetItem);
+    setIsOpen(true);
+  };
 
   const renderCard = (targetPage: PokemonList) => {
     return (
       <>
         {targetPage.results.map((item) => (
-          <div key={item.url} className={pokemonItem}>
+          <div
+            key={item.url}
+            className={pokemonItem}
+            onClick={handlePokemonClick(item)}
+          >
             <div
               style={{
                 backgroundColor: `${item.species?.color.name}`,
                 height: '8px',
-                position: 'absolute',
-                top: '12px',
-                left: 0,
-                right: 0,
+                margin: '12px 0',
               }}
             ></div>
             <img
@@ -60,9 +69,12 @@ export default function App() {
     );
   };
 
+  if (isLoading && !data) return <p>Loading...</p>;
+  if (status === 'error') return <p>Error: {error.message}</p>;
+
   return (
     <>
-      <div className={themeClass}>
+      <div>
         <div className={container}>
           <header className={header}>
             <h2>Pokemon</h2>
@@ -84,6 +96,11 @@ export default function App() {
         </div>
       </div>
       {isFetchingNextPage && <LoadingSpinner />}
+      <PokemonDetailModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        pokemon={pokemon}
+      />
     </>
   );
 }

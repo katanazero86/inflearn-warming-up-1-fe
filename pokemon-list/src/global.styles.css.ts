@@ -23,3 +23,19 @@ globalStyle('button', {
   cursor: 'pointer',
   backgroundColor: 'none',
 });
+
+globalStyle('progress', {
+  height: 12,
+  appearance: 'none',
+  borderRadius: 8,
+});
+
+globalStyle('progress::-webkit-progress-bar', {
+  backgroundColor: '#999999',
+  borderRadius: 8,
+});
+
+globalStyle('progress::-webkit-progress-value', {
+  backgroundColor: '#5e5eff',
+  borderRadius: 8,
+});
