@@ -10,6 +10,20 @@ export const header = style({
   color: '#2e2e2e',
   fontSize: vars.font.lg,
   letterSpacing: '-.5px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+});
+
+export const searchInput = style({
+  border: '1px solid #bababa',
+  padding: 12,
+  borderRadius: '8px',
+  appearance: 'none',
+  outline: 'none',
+  ':focus': {
+    border: '1px solid #b0b8ff',
+  },
 });
 
 export const pokemonList = style({

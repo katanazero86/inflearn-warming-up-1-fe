@@ -27,8 +27,6 @@ export default function PokemonDamageRelationsModal({
     if (e.target === e.currentTarget) onClose();
   };
 
-  console.log(pokemonType);
-
   const handleCloseClick = () => {
     onClose();
   };
@@ -50,7 +48,7 @@ export default function PokemonDamageRelationsModal({
                     <div className={damageRow}>
                       <p className={damageTitle}>Weak</p>
                       {pokemonType?.damage_relations.double_damage_from.map(
-                        (o) => <p>{o.name}</p>,
+                        (o, i) => <p key={i}>{o.name}</p>,
                       )}
                     </div>
                   )}
@@ -59,7 +57,7 @@ export default function PokemonDamageRelationsModal({
                     <div className={damageRow}>
                       <p className={damageTitle}>Double Damage To</p>
                       {pokemonType?.damage_relations.double_damage_to.map(
-                        (o) => <p>{o.name}</p>,
+                        (o, i) => <p key={i}>{o.name}</p>,
                       )}
                     </div>
                   )}
@@ -67,9 +65,9 @@ export default function PokemonDamageRelationsModal({
                   pokemonType?.damage_relations.half_damage_to.length > 0 && (
                     <div className={damageRow}>
                       <p className={damageTitle}>Half Damage To</p>
-                      {pokemonType?.damage_relations.half_damage_to.map((o) => (
-                        <p>{o.name}</p>
-                      ))}
+                      {pokemonType?.damage_relations.half_damage_to.map(
+                        (o, i) => <p key={i}>{o.name}</p>,
+                      )}
                     </div>
                   )}
                 {pokemonType &&
@@ -77,7 +75,7 @@ export default function PokemonDamageRelationsModal({
                     <div className={damageRow}>
                       <p className={damageTitle}>Half Damage From</p>
                       {pokemonType?.damage_relations.half_damage_from.map(
-                        (o) => <p>{o.name}</p>,
+                        (o, i) => <p key={i}>{o.name}</p>,
                       )}
                     </div>
                   )}
@@ -85,18 +83,18 @@ export default function PokemonDamageRelationsModal({
                   pokemonType?.damage_relations.no_damage_to.length > 0 && (
                     <div className={damageRow}>
                       <p className={damageTitle}>No Damage To</p>
-                      {pokemonType?.damage_relations.no_damage_to.map((o) => (
-                        <p>{o.name}</p>
-                      ))}
+                      {pokemonType?.damage_relations.no_damage_to.map(
+                        (o, i) => <p key={i}>{o.name}</p>,
+                      )}
                     </div>
                   )}
                 {pokemonType &&
                   pokemonType?.damage_relations.no_damage_from.length > 0 && (
                     <div className={damageRow}>
                       <p className={damageTitle}>No Damage From</p>
-                      {pokemonType?.damage_relations.no_damage_from.map((o) => (
-                        <p>{o.name}</p>
-                      ))}
+                      {pokemonType?.damage_relations.no_damage_from.map(
+                        (o, i) => <p key={i}>{o.name}</p>,
+                      )}
                     </div>
                   )}
               </div>

@@ -19,6 +19,7 @@ export const modalBody = style({
   padding: '8px',
   borderRadius: 8,
   backgroundColor: '#ebebeb',
+  position: 'relative',
 });
 
 export const pokemonImgContainer = style({
@@ -106,4 +107,18 @@ export const pokemonSprites = style({
   alignItems: 'center',
   justifyContent: 'center',
   height: 96,
+});
+
+export const moveRight = style({
+  position: 'absolute',
+  cursor: 'pointer',
+  top: '50%',
+  right: 0,
+});
+
+export const moveLeft = style({
+  position: 'absolute',
+  cursor: 'pointer',
+  top: '50%',
+  left: 0,
 });

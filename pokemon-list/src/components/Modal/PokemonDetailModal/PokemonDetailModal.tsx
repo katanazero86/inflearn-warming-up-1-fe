@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import { Fragment, MouseEvent, useState } from 'react';
 import { createPortal } from 'react-dom';
 import {
   modalContainer,
@@ -15,24 +15,31 @@ import {
   pokemonDescription,
   pokemonFlavorText,
   pokemonSprites,
+  moveRight,
+  moveLeft,
 } from './PokemonDetailModal.styles.css.ts';
 import { PokemonListResult } from '../../../@types/pokemon/pokemon.types.ts';
 import PokemonDamageRelationsModal from '../PokemonDamageRelationsModal/PokemonDamageRelationsModal.tsx';
+import RightIcon from '../../icons/RightIcon/RightIcon.tsx';
+import LeftIcon from '../../icons/LeftIcon/LeftIcon.tsx';
 
 interface PokemonDetailModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
   pokemon: PokemonListResult | null;
 }
 
 export default function PokemonDetailModal({
   isOpen,
   onClose,
+  onPrev,
+  onNext,
   pokemon,
 }: PokemonDetailModalProps) {
   const [isOpenDamageRelations, setIsOpenDamageRelations] = useState(false);
 
-  console.log(pokemon);
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) onClose();
   };
@@ -79,17 +86,17 @@ export default function PokemonDetailModal({
                 <div className={infoItem}>
                   기술
                   <br />
-                  {pokemon?.detail?.abilities.map((ability) => (
-                    <>
+                  {pokemon?.detail?.abilities.map((ability, i) => (
+                    <Fragment key={i}>
                       {ability.ability.name}
                       <br />
-                    </>
+                    </Fragment>
                   ))}
                 </div>
               </div>
               <div className={pokemonBasicStatus}>
-                {pokemon?.detail?.stats.map((stat) => (
-                  <div className={pokemonBasicStatusItem}>
+                {pokemon?.detail?.stats.map((stat, i) => (
+                  <div key={i} className={pokemonBasicStatusItem}>
                     <p className={itemCol3}>{stat.stat.name}</p>
                     <span style={{ width: 24 }}>{stat.base_stat}</span>
                     <progress
@@ -116,6 +123,12 @@ export default function PokemonDetailModal({
                 <img src={pokemon?.detail?.sprites.back_default} />
                 <img src={pokemon?.detail?.sprites.front_shiny} />
                 <img src={pokemon?.detail?.sprites.back_shiny} />
+              </div>
+              <div className={moveRight}>
+                <RightIcon onClick={onNext} />
+              </div>
+              <div className={moveLeft}>
+                <LeftIcon onClick={onPrev} />
               </div>
             </div>
           </div>,

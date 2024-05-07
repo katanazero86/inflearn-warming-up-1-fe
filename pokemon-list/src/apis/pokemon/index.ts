@@ -1,6 +1,5 @@
 import { AxiosInstance, AxiosStatic } from 'axios';
 import { PokemonList } from '../../@types/pokemon/pokemon.types.ts';
-import { PokemonDetail } from '../../@types/pokemon/pokemonDetail.types.ts';
 
 export const pokemonApis = (axiosInstance: AxiosInstance, _: AxiosStatic) => {
   return {
@@ -48,11 +47,22 @@ export const pokemonApis = (axiosInstance: AxiosInstance, _: AxiosStatic) => {
         throw e;
       }
     },
-    async findPokemonById(targetId: number) {
+    async findPokemonByName(targetName: string) {
       try {
-        const res = await axiosInstance.get<PokemonDetail>(
-          `/pokemon/${targetId}`,
+        const res = await axiosInstance.get(
+          `/pokemon/${targetName.toLowerCase()}`,
         );
+
+        // species
+        const speciesRes = await axiosInstance.get(res.data.species.url);
+
+        // type
+        const typeRes = await axiosInstance.get(res.data.types[0].type.url);
+        res.data = {
+          detail: res.data,
+          species: speciesRes.data,
+          type: typeRes.data,
+        };
         return res.data;
       } catch (e) {
         console.error(e);
