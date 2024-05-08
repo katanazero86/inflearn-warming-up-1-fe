@@ -8,6 +8,8 @@ export default function CounterPage() {
   const counter = useAppSelector((state) => state.counterReducer.counter);
   const dispatch = useAppDispatch();
 
+  console.log('CounterPage..');
+
   return (
     <div>
       <h2 className="p-2 text-center">{counter}</h2>
