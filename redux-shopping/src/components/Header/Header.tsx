@@ -11,6 +11,7 @@ export default function Header() {
   return (
     <header className={cn(HeaderVariants())}>
       <Drawer />
+      <h2 className="text-lg text-slate-600 font-semibold">이것저것</h2>
       <div className={'relative'}>
         <CartIcon />
       </div>
