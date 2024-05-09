@@ -8,7 +8,7 @@ export default function SWRConfigContext({ children }: { children: React.ReactNo
       value={{
         revalidateOnFocus: false,
         revalidateOnMount: true,
-        fetcher: (url: string) => axios.get(url).then((res) => res),
+        fetcher: (url: string) => axios.get(url).then((res) => res.data),
       }}
     >
       {children}

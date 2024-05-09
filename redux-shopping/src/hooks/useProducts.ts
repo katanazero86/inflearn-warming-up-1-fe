@@ -11,12 +11,18 @@ export const useProductsQuery = (category: string) => {
   return useSWR(`/api/products${queryParams ? `?${queryParams.toString()}` : ''}`);
 };
 
-export const useProductsInfinityQuery = (category: string) => {
+const getKey = (index: number, previousPageData: any) => {
   const LIMIT = 5;
+  console.log(previousPageData, '???????', index);
+  if (index === 0 && !previousPageData)
+    return `/api/products?page=${index + 1}&offset=${(index + 1 - 1) * LIMIT}`;
 
-  return useSWRInfinite((index, previousPageData) => {
-    console.log(previousPageData);
-    console.log('index', index);
-    return `/api/products?page=${index + 1}&offset=${(index - 1) * LIMIT}`;
-  });
+  if (index !== 0 && previousPageData.products.totalPages === index) {
+    return null;
+  }
+  return `/api/products?page=${index + 1}&offset=${(index + 1 - 1) * LIMIT}`;
+};
+
+export const useProductsInfinityQuery = (category: string) => {
+  return useSWRInfinite(getKey);
 };
