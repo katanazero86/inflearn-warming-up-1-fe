@@ -42,6 +42,10 @@ export default function Drawer() {
     if (e.target === e.currentTarget) setIsOpen(false);
   };
 
+  const handleCategoryClick = () => {
+    setIsOpen(false);
+  };
+
   const fetchCategories = async () => {
     try {
       const res = await fetch('/api/categories', {
@@ -82,7 +86,9 @@ export default function Drawer() {
                     className={`cursor-pointer py-3 text-sm hover:font-semibold`}
                     key={category.name}
                   >
-                    <Link href={category.url}>{category.name}</Link>
+                    <Link href={category.url} onClick={handleCategoryClick}>
+                      {category.name}
+                    </Link>
                   </li>
                 ))}
             </ul>

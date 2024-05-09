@@ -4,6 +4,7 @@ import './globals.css';
 import StoreProvider from '@/store/StoreProvider';
 import { clsx } from 'clsx';
 import Header from '@/components/Header/Header';
+import SWRConfigContext from '@/context/SWRConfigContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,22 +19,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <StoreProvider>
-      <html lang="kr">
-        <body
-          className={clsx(
-            inter.className,
-            'bg-slate-100',
-            'w-full',
-            'm-auto',
-            'max-w-screen-sm',
-            'shadow',
-          )}
-        >
-          <Header />
-          {children}
-        </body>
-      </html>
-    </StoreProvider>
+    <html lang="kr">
+      <body
+        className={clsx(
+          inter.className,
+          'bg-slate-100',
+          'w-full',
+          'm-auto',
+          'max-w-screen-sm',
+          'shadow',
+        )}
+      >
+        <SWRConfigContext>
+          <StoreProvider>
+            <Header />
+            {children}
+          </StoreProvider>
+        </SWRConfigContext>
+      </body>
+    </html>
   );
 }

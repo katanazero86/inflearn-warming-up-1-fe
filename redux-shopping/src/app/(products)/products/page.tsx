@@ -1,14 +1,10 @@
-'use client';
-
-import { useSearchParams } from 'next/navigation';
 import ProductList from '@/components/ProductList/ProductList';
+import { Suspense } from 'react';
 
 export default function ProductsPage() {
-  const queryParams = useSearchParams();
-  const category = queryParams.get('category');
   return (
     <main className="relative">
-      <ProductList category={category} />
+      <ProductList />
     </main>
   );
 }
