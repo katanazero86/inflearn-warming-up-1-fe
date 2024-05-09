@@ -1,4 +1,3 @@
-import HamburgerMenuIcon from '@/components/Icons/HamburgerMenuIcon/HamburgerMenuIcon';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/utils/classNameUtil';
 import Drawer from '@/components/Drawer/Drawer';

@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, MouseEvent } from 'react';
+import { useState, MouseEvent, useEffect } from 'react';
 import HamburgerMenuIcon from '@/components/Icons/HamburgerMenuIcon/HamburgerMenuIcon';
 import { cva } from 'class-variance-authority';
 import CloseIcon from '@/components/Icons/CloseIcon/CloseIcon';
 import { cn } from '@/utils/classNameUtil';
+import Link from 'next/link';
 
 const DrawerContainerVariants = cva(
   `fixed bg-black top-0 bottom-0 right-0 left-0 -z-10 bg-opacity-0 transition-all delay-250 duration-500`,
@@ -29,6 +30,7 @@ const DrawerNavVariants = cva(
 );
 
 export default function Drawer() {
+  const [categories, setCategories] = useState<{ name: string; url: string }[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const handleMenuIconClick = () => {
     setIsOpen(true);
@@ -39,6 +41,22 @@ export default function Drawer() {
   const handleDimmClick = (e: MouseEvent) => {
     if (e.target === e.currentTarget) setIsOpen(false);
   };
+
+  const fetchCategories = async () => {
+    try {
+      const res = await fetch('/api/categories', {
+        method: 'GET',
+      });
+      const data = await res.json();
+      setCategories(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <>
@@ -58,10 +76,15 @@ export default function Drawer() {
           <section className={`py-2`}>
             <h3 className={`text-lg font-semibold`}>전체 카테고리</h3>
             <ul className={`grid grid-cols-2 gap-2`}>
-              <li className={`cursor-pointer py-3 text-sm hover:font-semibold`}>전체</li>
-              <li className={`cursor-pointer py-3 text-sm hover:font-semibold`}>전자기기</li>
-              <li className={`cursor-pointer py-3 text-sm hover:font-semibold`}>샐러드</li>
-              <li className={`cursor-pointer py-3 text-sm hover:font-semibold`}>의류</li>
+              {categories.length > 0 &&
+                categories.map((category) => (
+                  <li
+                    className={`cursor-pointer py-3 text-sm hover:font-semibold`}
+                    key={category.name}
+                  >
+                    <Link href={category.url}>{category.name}</Link>
+                  </li>
+                ))}
             </ul>
           </section>
         </nav>
