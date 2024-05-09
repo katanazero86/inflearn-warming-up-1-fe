@@ -1,6 +1,6 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
-import { useProductsQuery } from '@/hooks/useProducts';
+import { useProductsQuery, useProductsInfinityQuery } from '@/hooks/useProducts';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import ProductCardSkeleton from '@/components/ProductCard/ProductCardSkeleton/ProductCardSkeleton';
 
@@ -10,7 +10,8 @@ export default function ProductList() {
   const category = queryParams.get('category') ?? '0';
 
   const { data, isLoading, error } = useProductsQuery(category);
-  console.log(data);
+
+  const { data: test, isLoading: testLoading, size, setSize } = useProductsInfinityQuery(category);
 
   if (isLoading)
     return (
@@ -24,7 +25,8 @@ export default function ProductList() {
       </section>
     );
 
-  console.log(data);
+  console.log(test);
+  console.log(size, 'size!!');
 
   return (
     <section className="grid grid-cols-2 gap-2 py-3">
@@ -35,6 +37,7 @@ export default function ProductList() {
             <ProductCard key={product.id} {...product} />
           ),
         )}
+      <button onClick={() => setSize(size + 1)}>더 보기</button>
     </section>
   );
 }

@@ -107,6 +107,8 @@ const dummy = [
 ];
 
 class ProductService {
+  limit = 5;
+
   findShoes() {
     return dummy.filter((item) => item.categoryId === 4);
   }
@@ -119,8 +121,18 @@ class ProductService {
     return dummy.filter((item) => item.categoryId === 3);
   }
 
-  findAllProducts() {
-    return [...dummy];
+  findAllProducts(page: number, offset: number) {
+    return {
+      products: dummy.filter((item, i) => {
+        if (i >= offset && i < offset + this.limit) return true;
+        return false;
+      }),
+      page,
+      offset,
+      limit: this.limit,
+      total: dummy.length,
+      totalPages: Math.floor(dummy.length / this.limit),
+    };
   }
 }
 
