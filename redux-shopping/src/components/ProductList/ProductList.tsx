@@ -1,46 +1,58 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
-import { useProductsQuery, useProductsInfinityQuery } from '@/hooks/useProducts';
+import { useProductsInfinityQuery } from '@/hooks/useProducts';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import ProductCardSkeleton from '@/components/ProductCard/ProductCardSkeleton/ProductCardSkeleton';
-import { useState } from 'react';
+import { ProductsInfinity } from '@/@types/products';
 
 export default function ProductList() {
-  // TODO: category 에 따른 상품 fetch
   const queryParams = useSearchParams();
   const category = queryParams.get('category') ?? '0';
 
-  // const { data, isLoading, error } = useProductsQuery(category);
+  const { data, isLoading, size, setSize } = useProductsInfinityQuery(category);
 
-  const { data: test, isLoading: testLoading, size, setSize } = useProductsInfinityQuery(category);
+  const { observeRef } = useIntersectionObserver(
+    () => {
+      if (!!data && data[0].products.totalPages > size) setSize(size + 1);
+    },
+    {
+      rootElement: null,
+      rootMargin: '0px',
+      threshold: 0.8,
+    },
+  );
 
-  // if (isLoading)
-  //   return (
-  //     <section className="grid grid-cols-2 gap-2 py-3">
-  //       <ProductCardSkeleton />
-  //       <ProductCardSkeleton />
-  //       <ProductCardSkeleton />
-  //       <ProductCardSkeleton />
-  //       <ProductCardSkeleton />
-  //       <ProductCardSkeleton />
-  //     </section>
-  //   );
+  if (isLoading)
+    return (
+      <section className="grid grid-cols-2 gap-2 py-3">
+        <ProductCardSkeleton />
+        <ProductCardSkeleton />
+        <ProductCardSkeleton />
+        <ProductCardSkeleton />
+      </section>
+    );
 
-  console.log(test, size);
+  const renderProductCard = (targetData: ProductsInfinity[]) => {
+    if (targetData.length > 0) {
+      return (
+        <>
+          {targetData.map((o) =>
+            o.products.products.map((product) => <ProductCard key={product.id} {...product} />),
+          )}
+        </>
+      );
+    } else {
+      return <h2>No Data :)</h2>;
+    }
+  };
 
   return (
     <section className="grid grid-cols-2 gap-2 py-3">
-      {/*{data !== undefined &&*/}
-      {/*  data.products?.length > 0 &&*/}
-      {/*  data.products.map(*/}
-      {/*    (product: { id: string; name: string; imgUrl: string; price: number }) => (*/}
-      {/*      <ProductCard key={product.id} {...product} />*/}
-      {/*    ),*/}
-      {/*  )}*/}
-      {test && test[0].products.totalPages > size && (
-        <button onClick={() => setSize(size + 1)}>더 보기</button>
+      {data !== undefined && renderProductCard(data)}
+      {!!data && data[0].products.totalPages > size && (
+        <div ref={observeRef} style={{ height: 350 }}></div>
       )}
-      <button onClick={() => setSize(size + 1)}>더 보기</button>
     </section>
   );
 }

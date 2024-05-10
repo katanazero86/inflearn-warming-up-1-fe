@@ -82,11 +82,12 @@ export default function Drawer() {
             <ul className={`grid grid-cols-2 gap-2`}>
               {categories.length > 0 &&
                 categories.map((category) => (
-                  <li
-                    className={`cursor-pointer py-3 text-sm hover:font-semibold`}
-                    key={category.name}
-                  >
-                    <Link href={category.url} onClick={handleCategoryClick}>
+                  <li key={category.name} className="py-3">
+                    <Link
+                      className={`cursor-pointer text-sm hover:font-semibold`}
+                      href={category.url}
+                      onClick={handleCategoryClick}
+                    >
                       {category.name}
                     </Link>
                   </li>

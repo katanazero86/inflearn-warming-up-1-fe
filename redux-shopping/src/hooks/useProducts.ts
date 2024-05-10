@@ -1,5 +1,6 @@
 import useSWR from 'swr';
 import useSWRInfinite from 'swr/infinite';
+import { ProductsInfinity } from '@/@types/products';
 
 export const useProductsQuery = (category: string) => {
   let queryParams;
@@ -13,7 +14,6 @@ export const useProductsQuery = (category: string) => {
 
 const getKey = (index: number, previousPageData: any) => {
   const LIMIT = 5;
-  console.log(previousPageData, '???????', index);
   if (index === 0 && !previousPageData)
     return `/api/products?page=${index + 1}&offset=${(index + 1 - 1) * LIMIT}`;
 
@@ -24,5 +24,8 @@ const getKey = (index: number, previousPageData: any) => {
 };
 
 export const useProductsInfinityQuery = (category: string) => {
-  return useSWRInfinite(getKey);
+  return useSWRInfinite<ProductsInfinity>(getKey, {
+    initialSize: 1,
+    revalidateFirstPage: false,
+  });
 };
