@@ -8,19 +8,10 @@ export function GET(req: NextRequest) {
 
   const productService = new ProductService();
   let products;
-  switch (category) {
-    case '2':
-      products = productService.findElectronics();
-      break;
-    case '3':
-      products = productService.findSalads();
-      break;
-    case '4':
-      products = productService.findShoes();
-      break;
-    default: {
-      products = productService.findAllProducts(+page!, +offset!);
-    }
+  if (category) {
+    products = productService.findAllProductsByCategory(+page!, +offset!, category);
+  } else {
+    products = productService.findAllProducts(+page!, +offset!);
   }
 
   return NextResponse.json(

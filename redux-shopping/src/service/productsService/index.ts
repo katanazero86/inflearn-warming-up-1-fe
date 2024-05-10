@@ -109,24 +109,43 @@ const dummy = [
 class ProductService {
   limit = 5;
 
-  findShoes() {
-    return dummy.filter((item) => item.categoryId === 4);
-  }
+  // findShoes() {
+  //   return dummy.filter((item) => item.categoryId === 4);
+  // }
+  //
+  // findElectronics() {
+  //   return dummy.filter((item) => item.categoryId === 2);
+  // }
+  //
+  // findSalads() {
+  //   return dummy.filter((item) => item.categoryId === 3);
+  // }
 
-  findElectronics() {
-    return dummy.filter((item) => item.categoryId === 2);
-  }
+  findAllProductsByCategory(page: number, offset: number, category: string) {
+    const productsAll = dummy.filter((item) => item.categoryId === +category);
+    const products = productsAll.filter((_, i) => {
+      if (i >= offset && i < offset + this.limit) return true;
+      return false;
+    });
 
-  findSalads() {
-    return dummy.filter((item) => item.categoryId === 3);
+    return {
+      products,
+      page,
+      offset,
+      limit: this.limit,
+      total: productsAll.length,
+      totalPages: Math.floor(productsAll.length / this.limit),
+    };
   }
 
   findAllProducts(page: number, offset: number) {
+    const products = dummy.filter((item, i) => {
+      if (i >= offset && i < offset + this.limit) return true;
+      return false;
+    });
+
     return {
-      products: dummy.filter((item, i) => {
-        if (i >= offset && i < offset + this.limit) return true;
-        return false;
-      }),
+      products,
       page,
       offset,
       limit: this.limit,

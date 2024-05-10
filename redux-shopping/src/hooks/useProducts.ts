@@ -12,20 +12,34 @@ export const useProductsQuery = (category: string) => {
   return useSWR(`/api/products${queryParams ? `?${queryParams.toString()}` : ''}`);
 };
 
-const getKey = (index: number, previousPageData: any) => {
+const getKey = (
+  index: number,
+  previousPageData: ProductsInfinity | null,
+  category: string | null,
+) => {
   const LIMIT = 5;
-  if (index === 0 && !previousPageData)
-    return `/api/products?page=${index + 1}&offset=${(index + 1 - 1) * LIMIT}`;
 
-  if (index !== 0 && previousPageData.products.totalPages === index) {
+  const queryParams = new URLSearchParams({
+    page: `${index + 1}`,
+    offset: `${(index + 1 - 1) * LIMIT}`,
+  });
+
+  if (category !== null && category !== '') queryParams.append('category', category);
+
+  if (index === 0 && !previousPageData) return `/api/products?${queryParams.toString()}`;
+
+  if (index !== 0 && previousPageData?.products.totalPages === index) {
     return null;
   }
-  return `/api/products?page=${index + 1}&offset=${(index + 1 - 1) * LIMIT}`;
+  return `/api/products?${queryParams.toString()}`;
 };
 
-export const useProductsInfinityQuery = (category: string) => {
-  return useSWRInfinite<ProductsInfinity>(getKey, {
-    initialSize: 1,
-    revalidateFirstPage: false,
-  });
+export const useProductsInfinityQuery = (category: string | null) => {
+  return useSWRInfinite<ProductsInfinity>(
+    (index, previousPageData) => getKey(index, previousPageData, category),
+    {
+      initialSize: 1,
+      revalidateFirstPage: false,
+    },
+  );
 };
