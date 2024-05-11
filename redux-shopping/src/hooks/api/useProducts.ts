@@ -1,4 +1,4 @@
-import useSWR, { unstable_serialize } from 'swr';
+import useSWR from 'swr';
 import useSWRInfinite from 'swr/infinite';
 import { ProductsInfinity } from '@/@types/products';
 

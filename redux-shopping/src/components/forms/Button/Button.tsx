@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { cva } from 'class-variance-authority';
 import { cn } from '@/utils/classNameUtil';
 
-const ButtonVariants = cva(`font-medium px-5 py-2.5 rounded-lg`, {
+const ButtonVariants = cva(`font-medium rounded-lg`, {
   variants: {
     variant: {
       default: '',
@@ -17,6 +17,10 @@ const ButtonVariants = cva(`font-medium px-5 py-2.5 rounded-lg`, {
     },
     disabled: {
       true: 'disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-500',
+    },
+    size: {
+      sm: 'px-3 py-1 text-sm',
+      md: 'px-5 py-2.5 text-base',
     },
   },
   compoundVariants: [
@@ -41,17 +45,19 @@ const ButtonVariants = cva(`font-medium px-5 py-2.5 rounded-lg`, {
   defaultVariants: {
     variant: 'default',
     color: 'primary',
+    size: 'md',
   },
 });
 
 interface ButtonProps {
   children: ReactNode;
   type?: 'button' | 'submit' | 'reset';
-  disabled?: boolean;
   onClick?: () => void;
   variant?: 'default' | 'outline';
   color?: 'primary' | 'secondary';
   wFull?: boolean;
+  disabled?: boolean;
+  size?: 'sm' | 'md';
 }
 
 export default function Button({
@@ -62,10 +68,11 @@ export default function Button({
   color,
   wFull,
   disabled,
+  size,
 }: ButtonProps) {
   return (
     <button
-      className={cn(ButtonVariants({ variant, color, wFull, disabled }))}
+      className={cn(ButtonVariants({ variant, color, wFull, disabled, size }))}
       type={type}
       disabled={disabled}
       onClick={onClick}
