@@ -1,15 +1,9 @@
-import useSWR from 'swr';
+import useSWR, { unstable_serialize } from 'swr';
 import useSWRInfinite from 'swr/infinite';
 import { ProductsInfinity } from '@/@types/products';
 
-export const useProductsQuery = (category: string) => {
-  let queryParams;
-  if (category)
-    queryParams = new URLSearchParams({
-      category,
-    });
-
-  return useSWR(`/api/products${queryParams ? `?${queryParams.toString()}` : ''}`);
+export const useProductsDetailQuery = (id: string) => {
+  return useSWR(`/api/products/${id}`);
 };
 
 const getKey = (

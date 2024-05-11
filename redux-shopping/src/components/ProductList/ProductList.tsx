@@ -1,6 +1,6 @@
 'use client';
 import { redirect, useSearchParams } from 'next/navigation';
-import { useProductsInfinityQuery } from '@/hooks/useProducts';
+import { useProductsInfinityQuery } from '@/hooks/api/useProducts';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import ProductCardSkeleton from '@/components/ProductCard/ProductCardSkeleton/ProductCardSkeleton';
@@ -11,7 +11,6 @@ export default function ProductList() {
   const category = queryParams.get('category');
 
   const { data, isLoading, size, setSize, isValidating } = useProductsInfinityQuery(category);
-  console.log(data);
 
   const { observeRef } = useIntersectionObserver(
     () => {

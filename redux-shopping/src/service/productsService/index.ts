@@ -121,6 +121,23 @@ class ProductService {
   //   return dummy.filter((item) => item.categoryId === 3);
   // }
 
+  findProductsMetaDataById(id: number) {
+    return {
+      title: `products ${id}`,
+      description: `products ${id}`,
+      keywords: '나는 키워드!',
+    };
+  }
+
+  async findProductsByID(targetId: number) {
+    // 일부러 1.5초 지연
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(dummy.find((p) => p.id === targetId));
+      }, 1500);
+    });
+  }
+
   findAllProductsByCategory(page: number, offset: number, category: string) {
     const productsAll = dummy.filter((item) => item.categoryId === +category);
     const products = productsAll.filter((_, i) => {
