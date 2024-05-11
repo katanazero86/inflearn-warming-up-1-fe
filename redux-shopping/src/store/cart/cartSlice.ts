@@ -17,11 +17,23 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addCart: (state, payload: PayloadAction<CartPayload>) => {
-      console.log(payload);
       state.carts.push(payload.payload);
     },
-    removeCart: (state, payload) => {},
-    updateCart: (state, payload) => {},
+    removeCart: (state, payload: PayloadAction<number>) => {
+      state.carts = state.carts.filter((cart) => cart.id !== payload.payload);
+    },
+    updateCart: (state, payload: PayloadAction<{ id: number; count: number }>) => {
+      const { id, count } = payload.payload;
+      state.carts = state.carts.map((cart) => {
+        if (cart.id === id) {
+          return {
+            ...cart,
+            count,
+          };
+        }
+        return cart;
+      });
+    },
   },
 });
 
