@@ -1,3 +1,19 @@
+### 인프런 워밍업 클럽 스터디 1기 - FE
+
+---
+
+- 리덕스를 이용한 쇼핑몰 앱   
+  스택: Next.js, TypeScript, TailwindCSS, SWR, Redux(RTK)
+
+- Tailwind CSS 를 사용하였으며 clsx, twMerge, cva 를 활용한 컴포넌트 작성
+- Vercel SWR 를 활용하여 data fetching
+- 장바구니 구현을 위해 Redux(RTK) 사용
+- 무한 스크롤링이 적용되어 있습니다.
+
+![img.gif](img.gif)
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
